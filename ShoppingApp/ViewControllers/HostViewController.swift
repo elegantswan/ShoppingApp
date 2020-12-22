@@ -19,7 +19,8 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
     lazy var hostTabController: UIViewController = { [unowned self] in
         let tabBarController = UITabBarController()
         tabBarController.delegate = self
-        tabBarController.tabBar.barStyle = .default
+        //tabBarController.tabBar.barStyle = .default
+        tabBarController.tabBar.isTranslucent = false
         tabBarController.viewControllers = [self.categoriesVC.navigationController(), self.homeVC.navigationController(), self.profileVC.navigationController()]
         return tabBarController
     }()

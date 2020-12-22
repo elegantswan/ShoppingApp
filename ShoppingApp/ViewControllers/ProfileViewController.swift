@@ -10,9 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
   
-    
-    
     private var collectionView: UICollectionView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         layout.minimumInteritemSpacing = 3
         layout.itemSize = CGSize(width: (view.safeAreaLayoutGuide.layoutFrame.width/3) - 4, height: (view.safeAreaLayoutGuide.layoutFrame.width / 3) - 4)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-
         
         guard let collectionView = collectionView else {
             return

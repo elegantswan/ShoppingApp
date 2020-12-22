@@ -10,7 +10,7 @@ import UIKit
 
 class UIConfiguration {
     // General
-    static let mainThemeColor = UIColor(hexString: "#2C80E1", alpha: 0.9) // green = #A7C51A
+    static let mainThemeColor = UIColor(hexString: "#ffcb69", alpha: 1) // green = #A7C51A
 
     // Navigation
     static let navigationBarBackgroundColor = mainThemeColor
@@ -24,7 +24,9 @@ class UIConfiguration {
 
     // Home screen
     static let homeScreenTitle = "Home"
-    static let categoriesTitle = "Shop"
+    static let categoriesTitle = "Discover"
+    static let profileTitle = "LookBook"
+
 
     // Tab bar
     static let tabBarTintColor = mainThemeColor

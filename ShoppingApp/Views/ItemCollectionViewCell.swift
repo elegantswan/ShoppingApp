@@ -1,32 +1,24 @@
 //
-//  CartItemCollectionViewCell.swift
-//  ShoppingApp
+//  ItemCollectionViewCell.swift
+//  SwipeableCollectionViewCell
 //
-//  Created by Florian Marcu on 11/8/17.
-//  Copyright © 2017 iOS App Templates. All rights reserved.
+//  Created by Amer Hukic on 24/08/2018.
+//  Copyright © 2018 Amer Hukic. All rights reserved.
 //
 
-import Kingfisher
 import UIKit
-
-
-//parameter was previously SwipeableCollectionView
-class CartItemCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var cartItemImageView: UIImageView!
-    @IBOutlet var cartPriceLabel: UILabel!
-    @IBOutlet var cartItemTitleLabel: UILabel!
-
-    func configure(item: ATCShoppingCartItem) {
-        cartItemImageView.kf.setImage(with: URL(string: item.product.cartImageURLString))
-        cartItemImageView.contentMode = .scaleAspectFit
-        cartPriceLabel.text = "$" + String(Int(item.product.cartPrice))
-        cartItemTitleLabel.text = item.product.cartTitle
-
-        cartPriceLabel.textColor = UIConfiguration.cartScreenPriceLabelColor
-        cartPriceLabel.font = UIConfiguration.cartScreenPriceFont
-
-        cartItemTitleLabel.font = UIConfiguration.cartScreenTitleFont
-    }
+/*
+class ItemCollectionViewCell: SwipeableCollectionViewCell {
+    /*
+    
+    let itemNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor(white: 0.2, alpha: 1)
+        label.textAlignment = .center
+        return label
+    }()
+    */
     
     let deleteImageView: UIImageView = {
         let image = UIImage(named: "delete")?.withRenderingMode(.alwaysTemplate)
@@ -35,16 +27,20 @@ class CartItemCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupSubviews()
+    }
     
-    /*
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupSubviews() {
         //visibleContainerView.backgroundColor = .white
         //visibleContainerView.addSubview(itemNameLabel)
         //itemNameLabel.pinEdgesToSuperView()
         
-     
-     
-        //Fix deleteImageView constraints
         hiddenContainerView.backgroundColor = UIColor(red: 231.0 / 255.0, green: 76.0 / 255.0, blue: 60.0 / 255.0, alpha: 1)
         hiddenContainerView.addSubview(deleteImageView)
         deleteImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,5 +49,5 @@ class CartItemCollectionViewCell: UICollectionViewCell {
         deleteImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
         deleteImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
- */
 }
+*/

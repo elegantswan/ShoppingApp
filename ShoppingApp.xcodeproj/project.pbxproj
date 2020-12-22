@@ -112,6 +112,11 @@
 		D834EE78255D6B76001F5086 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE75255D6B76001F5086 /* UIScrollView+.swift */; };
 		D834EE81256149A2001F5086 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE80256149A2001F5086 /* ProfileViewController.swift */; };
 		D834EE8525614E8B001F5086 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE8425614E8B001F5086 /* CustomCollectionViewCell.swift */; };
+		D834EE992562AB08001F5086 /* ClothingScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = D834EE982562AB08001F5086 /* ClothingScroll.xib */; };
+		D834EE9C2562ABE6001F5086 /* ClothingScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE9B2562ABE6001F5086 /* ClothingScroll.swift */; };
+		D834EEC92590D8F1001F5086 /* SwipeableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EEC82590D8F1001F5086 /* SwipeableCollectionViewCell.swift */; };
+		D834EECC2590D8FB001F5086 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */; };
+		D834EED12590D9B5001F5086 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EED02590D9B5001F5086 /* UIView+Anchors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +232,11 @@
 		D834EE75255D6B76001F5086 /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "../../../../Documents/PagingViewsTutorial/PagingViewsTutorial/Helpers/UIScrollView+.swift"; sourceTree = "<group>"; };
 		D834EE80256149A2001F5086 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D834EE8425614E8B001F5086 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		D834EE982562AB08001F5086 /* ClothingScroll.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClothingScroll.xib; path = "../../../../instagram/instagram/Controllers/Core Tabs/ClothingScroll.xib"; sourceTree = "<group>"; };
+		D834EE9B2562ABE6001F5086 /* ClothingScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClothingScroll.swift; path = ../../../../instagram/instagram/Controllers/Other/General/ClothingScroll.swift; sourceTree = "<group>"; };
+		D834EEC82590D8F1001F5086 /* SwipeableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCollectionViewCell.swift; sourceTree = "<group>"; };
+		D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		D834EED02590D9B5001F5086 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Anchors.swift"; path = "../../../../../Downloads/SwipeableCollectionViewCell-Example-master/SwipeableCollectionViewCell-Example/UIView+Anchors.swift"; sourceTree = "<group>"; };
 		DEFF82BB68F94F6A55622F12 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		E61B1A3F1D7F673A9DA3B1B2 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0A25332C6EA81E2C31437D /* Pods-ShoppingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingAppUITests/Pods-ShoppingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -431,6 +441,7 @@
 				D834EE80256149A2001F5086 /* ProfileViewController.swift */,
 				1762D27B1F5645FA0073F4CD /* CategoriesViewController.swift */,
 				1762D27D1F5646060073F4CD /* HomeViewController.swift */,
+				D834EE982562AB08001F5086 /* ClothingScroll.xib */,
 				1762D27F1F5646160073F4CD /* ItemsViewController.swift */,
 				1762D2841F5647890073F4CD /* CartViewController.swift */,
 				17F9EB1C1F58CDDD0005F164 /* ShoppingNavigationController.swift */,
@@ -449,6 +460,7 @@
 		1762D2811F5646430073F4CD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D834EED02590D9B5001F5086 /* UIView+Anchors.swift */,
 				1762D2821F56467F0073F4CD /* UIViewController+Additions.swift */,
 				1762D2861F564DC80073F4CD /* UIImage+Additions.swift */,
 				1762D2881F564F780073F4CD /* UITabBarItem+Additions.swift */,
@@ -484,6 +496,7 @@
 			children = (
 				1770EBB01F58C80B004620C9 /* BadgedButton.swift */,
 				1770EBB21F58C86D004620C9 /* BadgedCountLabel.swift */,
+				D834EE9B2562ABE6001F5086 /* ClothingScroll.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -550,6 +563,8 @@
 				174B7B461FC0DC4400A48144 /* ImageCollectionViewCell.xib */,
 				1792027E1FC6362500EA0EC5 /* CartFooterCollectionReusableView.swift */,
 				1792027F1FC6362500EA0EC5 /* CartFooterCollectionReusableView.xib */,
+				D834EEC82590D8F1001F5086 /* SwipeableCollectionViewCell.swift */,
+				D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -634,6 +649,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D834EE992562AB08001F5086 /* ClothingScroll.xib in Resources */,
 				174B7B481FC0DC4400A48144 /* ImageCollectionViewCell.xib in Resources */,
 				174B7B441FC0D40900A48144 /* ProductDetailsViewController.xib in Resources */,
 				17B80ED51F94500F0023CC2B /* ProductCollectionViewCell.xib in Resources */,
@@ -728,6 +744,7 @@
 				1770EBB11F58C80B004620C9 /* BadgedButton.swift in Sources */,
 				170CAE241F624277002C2AB7 /* SJUtil.swift in Sources */,
 				D834EE78255D6B76001F5086 /* UIScrollView+.swift in Sources */,
+				D834EED12590D9B5001F5086 /* UIView+Anchors.swift in Sources */,
 				17255DBD1FB79EB600B55FE8 /* UIColor.swift in Sources */,
 				1762D25D1F56427F0073F4CD /* HostViewController.swift in Sources */,
 				170CAE521F6246D5002C2AB7 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
@@ -749,6 +766,7 @@
 				17255DB11FB41D8400B55FE8 /* CartItemCollectionViewCell.swift in Sources */,
 				1762D25B1F56427F0073F4CD /* AppDelegate.swift in Sources */,
 				178A476422A2351F0030A873 /* Typealiases.swift in Sources */,
+				D834EECC2590D8FB001F5086 /* ItemCollectionViewCell.swift in Sources */,
 				170CAE571F6246D5002C2AB7 /* ConstraintMaker.swift in Sources */,
 				179202801FC6362500EA0EC5 /* CartFooterCollectionReusableView.swift in Sources */,
 				17255DA41F9D88A000B55FE8 /* WordPressPostAdapter.swift in Sources */,
@@ -792,6 +810,7 @@
 				170CAE231F624277002C2AB7 /* SJShadow.swift in Sources */,
 				170CAE1F1F624277002C2AB7 /* SJSegmentedScrollView.swift in Sources */,
 				170CAE561F6246D5002C2AB7 /* ConstraintLayoutSupportDSL.swift in Sources */,
+				D834EE9C2562ABE6001F5086 /* ClothingScroll.swift in Sources */,
 				1709C02D1F5B85E50061A16D /* UIViewController+ATCAdditions.swift in Sources */,
 				178A476D22A235F70030A873 /* CheckoutViewController.swift in Sources */,
 				170CAE5A1F6246D5002C2AB7 /* ConstraintMakerFinalizable.swift in Sources */,
@@ -799,6 +818,7 @@
 				1762D27E1F5646060073F4CD /* HomeViewController.swift in Sources */,
 				170CAE4D1F6246D5002C2AB7 /* ConstraintDescription.swift in Sources */,
 				170CAE651F6246D5002C2AB7 /* ConstraintViewDSL.swift in Sources */,
+				D834EEC92590D8F1001F5086 /* SwipeableCollectionViewCell.swift in Sources */,
 				17255DA21F9D874D00B55FE8 /* WordPressPost.swift in Sources */,
 				1786060D1F940FD900FF328A /* ATCGenericCollectionViewController.swift in Sources */,
 			);

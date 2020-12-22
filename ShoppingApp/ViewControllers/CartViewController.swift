@@ -32,6 +32,7 @@ class CartViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = UIConfiguration.cartScreenBackgroundColor
         collectionView?.register(UINib(nibName: kCellReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: kCellReuseIdentifier)
         collectionView?.register(UINib(nibName: "CartFooterCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "CartFooterCollectionReusableView")
+        collectionView.pinEdgesToSuperView()
 
         checkoutButton.backgroundColor = UIConfiguration.mainThemeColor
         checkoutButton.setTitleColor(.white, for: .normal)
@@ -101,8 +102,25 @@ extension CartViewController {
         }
         fatalError()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: UIConfiguration.cartScreenFooterCellHeight)
+    }
+}
+
+
+//REVIEW
+extension CartViewController: SwipeableCollectionViewCellDelegate {
+    func hiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        //ATCShoppingCart.remove(at: indexPath.item)
+        collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [indexPath])
+        })
+    }
+    
+    func visibleContainerViewTapped(inCell cell: UICollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        print("Tapped item at index path: \(indexPath)")
     }
 }
