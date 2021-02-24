@@ -25,7 +25,7 @@ class UIConfiguration {
     // Home screen
     static let homeScreenTitle = "Home"
     static let categoriesTitle = "Discover"
-    static let profileTitle = "LookBook"
+    static let profileTitle = "Closet"
 
 
     // Tab bar
@@ -38,8 +38,12 @@ class UIConfiguration {
     static let homeTabBarItemSelectedImage: UIImage = .localImage("home-filled-icon")
 
     static let categoriesTabBarItemTitle = "Shop"
-    static let categoriesTabBarItemImage: UIImage = .localImage("cloakroom-icon")
-    static let categoriesTabBarItemSelectedImage: UIImage = .localImage("cloakroom-filled-icon")
+    static let categoriesTabBarItemImage: UIImage = .localImage("shopping-bag-icon")
+    static let categoriesTabBarItemSelectedImage: UIImage = .localImage("shopping-bag-filled-icon")
+    
+    static let profileTabBarItemTitle = "Closet"
+    static let profileTabBarItemImage: UIImage = .localImage("cloakroom-icon")
+    static let profileTabBarItemSelectedImage: UIImage = .localImage("cloakroom-filled-icon")
 
     static let cartTabBarItemTitle = "Cart"
     static let cartTabBarItemImage: UIImage = .localImage("shopping-bag-icon")

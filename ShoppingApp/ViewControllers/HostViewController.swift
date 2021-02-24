@@ -25,10 +25,20 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
         return tabBarController
     }()
     
+    func tabSetup() {
+        let profileTabBarItem = UITabBarItem(title: UIConfiguration.profileTitle, image: UIConfiguration.profileTabBarItemImage, selectedImage: UIConfiguration.profileTabBarItemSelectedImage).tabBarWithNoTitle()
+        
+        let homeTabBarItem = UITabBarItem(title: UIConfiguration.homeTabBarItemTitle, image: UIConfiguration.homeTabBarItemImage, selectedImage: UIConfiguration.homeTabBarItemSelectedImage).tabBarWithNoTitle()
+        
+        profileVC.tabBarItem = profileTabBarItem
+        homeVC.tabBarItem = homeTabBarItem
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addChildViewControllerWithView(hostTabController)
         HostViewController.cartManager.delegate = HostViewController.cartViewController
+        tabSetup()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
