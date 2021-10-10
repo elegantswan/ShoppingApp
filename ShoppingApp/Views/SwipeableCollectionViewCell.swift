@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SwipeableCollectionViewCellDelegate: class {
+protocol SwipeableCollectionViewCellDelegate: AnyObject {
     func visibleContainerViewTapped(inCell cell: UICollectionViewCell)
     func hiddenContainerViewTapped(inCell cell: UICollectionViewCell)
 }

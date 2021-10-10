@@ -2,9 +2,6 @@
 //  HostViewController.swift
 //  ShoppingApp
 //
-//  Created by Florian Marcu on 8/29/17.
-//  Copyright © 2017 iOS App Templates. All rights reserved.
-//
 
 import UIKit
 
@@ -17,7 +14,17 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
     static let cartViewController: CartViewController = CartViewController(cartManager: cartManager)
 
     lazy var hostTabController: UIViewController = { [unowned self] in
+        
         let tabBarController = UITabBarController()
+        
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+               
+            tabBarController.tabBar.standardAppearance = appearance
+            tabBarController.tabBar.scrollEdgeAppearance = appearance
+        }
+        
         tabBarController.delegate = self
         //tabBarController.tabBar.barStyle = .default
         tabBarController.tabBar.isTranslucent = false
@@ -26,7 +33,9 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
     }()
     
     func tabSetup() {
-        let profileTabBarItem = UITabBarItem(title: UIConfiguration.profileTitle, image: UIConfiguration.profileTabBarItemImage, selectedImage: UIConfiguration.profileTabBarItemSelectedImage).tabBarWithNoTitle()
+        
+        let profileTabBarItem = UITabBarItem(title: UIConfiguration.profileTabBarItemTitle, image: UIConfiguration.profileTabBarItemImage, selectedImage: UIConfiguration.profileTabBarItemSelectedImage).tabBarWithNoTitle()
+         
         
         let homeTabBarItem = UITabBarItem(title: UIConfiguration.homeTabBarItemTitle, image: UIConfiguration.homeTabBarItemImage, selectedImage: UIConfiguration.homeTabBarItemSelectedImage).tabBarWithNoTitle()
         

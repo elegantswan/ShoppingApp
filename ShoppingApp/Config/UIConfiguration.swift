@@ -23,8 +23,8 @@ class UIConfiguration {
     static let statusBarStyle: UIStatusBarStyle = .lightContent
 
     // Home screen
-    static let homeScreenTitle = "Home"
-    static let categoriesTitle = "Discover"
+    static let homeScreenTitle = "" //Replace with logo
+    static let categoriesTitle = "Shop"
     static let profileTitle = "Closet"
 
 
@@ -33,15 +33,15 @@ class UIConfiguration {
     static let tabBarBarTintColor = UIColor.white
     static let tabBarBarUnselectedItemTintColor = mainThemeColor
 
-    static let homeTabBarItemTitle = "Home"
+    static let homeTabBarItemTitle = "" //Replaced with space to remove text in tab bar
     static let homeTabBarItemImage: UIImage = .localImage("home-icon")
     static let homeTabBarItemSelectedImage: UIImage = .localImage("home-filled-icon")
 
-    static let categoriesTabBarItemTitle = "Shop"
+    static let categoriesTabBarItemTitle = "" //Replaced with space to remove text in tab bar
     static let categoriesTabBarItemImage: UIImage = .localImage("shopping-bag-icon")
     static let categoriesTabBarItemSelectedImage: UIImage = .localImage("shopping-bag-filled-icon")
     
-    static let profileTabBarItemTitle = "Closet"
+    static let profileTabBarItemTitle = "" //Replaced with space to remove text in tab bar
     static let profileTabBarItemImage: UIImage = .localImage("cloakroom-icon")
     static let profileTabBarItemSelectedImage: UIImage = .localImage("cloakroom-filled-icon")
 
@@ -99,8 +99,18 @@ class UIConfiguration {
 
         UITabBar.appearance().tintColor = UIConfiguration.tabBarTintColor
         UITabBar.appearance().barTintColor = UIConfiguration.tabBarBarTintColor
+        
         if #available(iOS 10.0, *) {
             UITabBar.appearance().unselectedItemTintColor = UIConfiguration.tabBarBarUnselectedItemTintColor
+        }
+        
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = mainThemeColor
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().standardAppearance = appearance
+
         }
     }
 }
