@@ -13,11 +13,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let homescreenModel = UIImage(named: "model")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = UIConfiguration.homeScreenTitle
         
+        //Set's up scroll view
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height)
         layout.scrollDirection = .horizontal
@@ -39,6 +42,24 @@ class HomeViewController: UIViewController {
         collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         collectionView.dataSource = self
+        
+        //Sets model image on home screen
+        
+        //******************Work on centering model*****************
+        let screenSize: CGRect = UIScreen.main.bounds
+
+        let myImageView:UIImageView = UIImageView()
+                myImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        
+                myImageView.frame = CGRect(x: self.view.frame.width/2, y: self.view.frame.width/2, width: screenSize.width, height: screenSize.height)
+
+                myImageView.center = self.view.center
+                
+                myImageView.image = homescreenModel
+                
+                view.addSubview(myImageView)
+         
+                self.view = view
     }
 }
 
@@ -47,7 +68,6 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     //Template code from YouTube
-    
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -58,4 +78,3 @@ extension HomeViewController: UICollectionViewDataSource {
         return collectionCell
     }
 }
-

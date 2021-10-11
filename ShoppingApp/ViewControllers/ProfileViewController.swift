@@ -16,8 +16,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //**********Need to remove title name from tab bar item*****************
-        //title = UIConfiguration.profileTitle
+        self.navigationItem.title = UIConfiguration.profileTitle
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
