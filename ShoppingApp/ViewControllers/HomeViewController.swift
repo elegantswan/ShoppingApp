@@ -21,6 +21,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = UIConfiguration.homeScreenTitle
+        
+        //Change background color when implementing button to see position.
+        view.backgroundColor = .white
         let homescreenModel = UIImage(named: "model")
         
         //Homescreen background setup
@@ -59,7 +62,19 @@ class HomeViewController: UIViewController {
         
         collectionView.dataSource = self
         
+        //Double tap implementation
+        
+        view.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(didDoubleTap(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tapGesture)
     }
+    
+        @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
+            view.backgroundColor = UIColor.red
+            HapticsManager.shared.vibrate(for: .success)
+        }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -71,9 +86,7 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.identifier, for: indexPath) as! HomepageScrollViewCustomCell
-       
         collectionCell.data = self.data[indexPath.row]
-        
         return collectionCell
     }
 }

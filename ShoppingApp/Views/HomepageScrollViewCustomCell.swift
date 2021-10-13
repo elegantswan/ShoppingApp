@@ -22,7 +22,6 @@ class HomepageScrollViewCustomCell: UICollectionViewCell {
         let imageView:UIImageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return imageView
     }()
     
@@ -41,6 +40,5 @@ class HomepageScrollViewCustomCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
     }
 }
