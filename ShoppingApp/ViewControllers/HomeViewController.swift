@@ -2,40 +2,56 @@
 //  HomeViewController.swift
 //  ShoppingApp
 //
-//  Created by Florian Marcu on 8/29/17.
-//  Copyright © 2017 iOS App Templates. All rights reserved.
-//
 
 import UIKit
 
-//***CollectionView Implemntation***
-//class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, ATCShoppingCartManagerDelegate
+struct ScrollViewImages {
+    var outfitImage: UIImage
+}
 
 class HomeViewController: UIViewController {
     
-    let homescreenModel = UIImage(named: "model")
+    let data = [
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "2.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "3.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = UIConfiguration.homeScreenTitle
+        let homescreenModel = UIImage(named: "model")
         
-        //Set's up scroll view
+        //Homescreen background setup
+        let modelBackgroundView:UIImageView = UIImageView()
+        modelBackgroundView.contentMode = UIView.ContentMode.scaleAspectFit
+        modelBackgroundView.image = homescreenModel
+        self.view = view
+        view.addSubview(modelBackgroundView)
+        modelBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        modelBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        modelBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        modelBackgroundView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        modelBackgroundView.heightAnchor.constraint(equalToConstant: view.frame.height).isActive = true
+        
+        //Scroll view setup
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width, height: view.safeAreaLayoutGuide.layoutFrame.height)
+        layout.itemSize = CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width,
+                                 height: view.safeAreaLayoutGuide.layoutFrame.height)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionViewCell")
+        collectionView.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.identifier)
         
         view.addSubview(collectionView)
         
+        collectionView.backgroundColor = UIColor.clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isPagingEnabled = true
-        
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -43,38 +59,22 @@ class HomeViewController: UIViewController {
         
         collectionView.dataSource = self
         
-        //Sets model image on home screen
-        
-        //******************Work on centering model*****************
-        let screenSize: CGRect = UIScreen.main.bounds
-
-        let myImageView:UIImageView = UIImageView()
-                myImageView.contentMode = UIView.ContentMode.scaleAspectFit
-        
-                myImageView.frame = CGRect(x: self.view.frame.width/2, y: self.view.frame.width/2, width: screenSize.width, height: screenSize.height)
-
-                myImageView.center = self.view.center
-                
-                myImageView.image = homescreenModel
-                
-                view.addSubview(myImageView)
-         
-                self.view = view
     }
 }
-
-//extension HomeViewController:UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDataSource {
     
     //Template code from YouTube
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+         return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
-        collectionCell.backgroundColor = [UIColor.green, .blue, .black, .yellow, .white].randomElement()
+        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.identifier, for: indexPath) as! HomepageScrollViewCustomCell
+       
+        collectionCell.data = self.data[indexPath.row]
+        
         return collectionCell
     }
 }
+ 

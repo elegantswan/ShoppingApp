@@ -5,7 +5,6 @@
 //  Created by Amer Hukic on 23/08/2018.
 //  Copyright © 2018 Amer Hukic. All rights reserved.
 //
-
 import UIKit
 
 protocol SwipeableCollectionViewCellDelegate: AnyObject {
