@@ -17,28 +17,27 @@ class HomeViewController: UIViewController {
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "3.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
     ]
+    
     //Top shirt button setup
     lazy var topButton: HomescreenClothesSelectorButton = {
-        let button = HomescreenClothesSelectorButton(title: " df")
-        let shirtButton = HomescreenClothesSelectorButton(type: UIButton.ButtonType.custom)
-        topButton.setTitleColor(UIColor.red, for: .normal)
-        /*
-        let topImage = UIImage(named: "model")
-        topButton.setImage(topImage, for: .normal)
-         */
-        return shirtButton
+        let button = HomescreenClothesSelectorButton(title: "Button 1")
+        
+        let topImage = UIImage(named: "top-filled-icon")
+        button.setImage(topImage, for: .normal)
+         
+        return button
     }()
+    
     //Bottom pants button setup
     lazy var bottomButton: HomescreenClothesSelectorButton = {
-        let pantsButton = HomescreenClothesSelectorButton(title: "Button 2")
-        pantsButton.setTitleColor(UIColor.red, for: .normal)
-        /*
+        let button = HomescreenClothesSelectorButton(title: "Button 2")
+        
         let bottomImage = UIImage(imageLiteralResourceName: "bottoms-icon")
-        bottomButton.setImage(bottomImage.withRenderingMode(.alwaysOriginal), for: .normal)
-         */
-        return pantsButton
-    }()
+        button.setImage(bottomImage, for: .normal)
 
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = UIConfiguration.homeScreenTitle
@@ -104,31 +103,18 @@ class HomeViewController: UIViewController {
     
     func setUpContraints(){
         
-        /*
-        view.addSubview(topButton)
-        topButton.translatesAutoresizingMaskIntoConstraints = false
-        topButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        topButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        topButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        topButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
-
-        view.addSubview(topButton)
-        bottomButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        bottomButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        bottomButton.topAnchor.constraint(equalTo: topButton.bottomAnchor, constant: 20).isActive = true
-        */
         let stack = UIStackView(arrangedSubviews: [topButton, bottomButton])
         stack.axis = .vertical
-        stack.spacing = 15
+        stack.spacing = 0
         stack.distribution = .fillEqually
         
         view.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.widthAnchor.constraint(equalToConstant: 725).isActive = true
-        stack.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        
+        stack.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        stack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
+        stack.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        stack.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
 }
 
