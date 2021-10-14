@@ -18,13 +18,16 @@ class HomeViewController: UIViewController {
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
     ]
     
+    var topButtonIsPressed: Bool = false
+    var bottomButtonIsPressed: Bool = false
+    
     //Top shirt button setup
     lazy var topButton: HomescreenClothesSelectorButton = {
         let button = HomescreenClothesSelectorButton(title: "Button 1")
         
         let topImage = UIImage(named: "top-filled-icon")
         button.setImage(topImage, for: .normal)
-         
+                 
         return button
     }()
     
@@ -91,18 +94,19 @@ class HomeViewController: UIViewController {
         
         //Button setup
         setUpContraints()
+        topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
+        bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
     }
     
-        @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
-            //Confirms successful doubletap
-            view.backgroundColor = UIColor.red
-            HapticsManager.shared.vibrate(for: .success)
-        }
+    @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
+        //Confirms successful doubletap
+        view.backgroundColor = UIColor.red
+        HapticsManager.shared.vibrate(for: .success)
+    }
     
     //MARK: Helpers
     
     func setUpContraints(){
-        
         let stack = UIStackView(arrangedSubviews: [topButton, bottomButton])
         stack.axis = .vertical
         stack.spacing = 0
@@ -115,6 +119,25 @@ class HomeViewController: UIViewController {
         stack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15).isActive = true
         stack.widthAnchor.constraint(equalToConstant: 25).isActive = true
         stack.heightAnchor.constraint(equalToConstant: 80).isActive = true
+    }
+    
+    //Change button state
+    @objc func topButtonClicked(){
+        topButtonIsPressed = true
+        bottomButtonIsPressed = false
+        topButton.setImage(UIImage(named: "top-filled-icon"), for: .normal)
+        bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
+        
+        print("Top button pressed")
+    }
+    
+    @objc func bottomButtonClicked(){
+        bottomButtonIsPressed = true
+        topButtonIsPressed = false
+        topButton.setImage(UIImage(named: "top-icon"), for: .normal)
+        bottomButton.setImage(UIImage(named: "bottoms-filled-icon"), for: .normal)
+        
+        print("Bottom button pressed")
     }
 }
 
