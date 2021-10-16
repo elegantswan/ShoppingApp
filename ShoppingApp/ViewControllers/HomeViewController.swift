@@ -19,21 +19,19 @@ class HomeViewController: UIViewController {
     ]
     
     //Button states
-    var topButtonIsPressed: Bool = false
-    var bottomButtonIsPressed: Bool = false
+    private var topButtonIsPressed: Bool = false
+    private var bottomButtonIsPressed: Bool = false
     
     //Homescreen background setup
     lazy var backgroundModel: UIImageView = {
         let modelBackgroundView = UIImageView()
         modelBackgroundView.contentMode = UIView.ContentMode.scaleAspectFit
         modelBackgroundView.image = UIImage(imageLiteralResourceName: "model")
-    
         return modelBackgroundView
     }()
     
-    func initBackGroundModel() {
+    func initBackgroundModel() {
         view.addSubview(backgroundModel)
-
         backgroundModel.translatesAutoresizingMaskIntoConstraints = false
         backgroundModel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         backgroundModel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -42,9 +40,8 @@ class HomeViewController: UIViewController {
     }
     
     //Scrollview setup
-    lazy var scrollView: UICollectionView = {
+    lazy var topScrollView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         layout.itemSize = CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width,
                                  height: view.safeAreaLayoutGuide.layoutFrame.height)
         layout.scrollDirection = .horizontal
@@ -59,25 +56,49 @@ class HomeViewController: UIViewController {
     }()
     
     func initScrollView() {
-        view.addSubview(scrollView)
-        scrollView.backgroundColor = UIColor.clear
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isPagingEnabled = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        scrollView.dataSource = self
+        view.addSubview(topScrollView)
+        topScrollView.backgroundColor = UIColor.clear
+        topScrollView.translatesAutoresizingMaskIntoConstraints = false
+        topScrollView.isPagingEnabled = true
+        topScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        topScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        topScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topScrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        topScrollView.dataSource = self
     }
     
+    lazy var bottomScrollView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width,
+                                 height: view.safeAreaLayoutGuide.layoutFrame.height)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        let collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.identifier)
+        
+        return collectionView1
+    }()
     
+    func initSecondScrollView() {
+        view.addSubview(bottomScrollView)
+        bottomScrollView.backgroundColor = UIColor.clear
+        bottomScrollView.translatesAutoresizingMaskIntoConstraints = false
+        bottomScrollView.isPagingEnabled = true
+        bottomScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        bottomScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bottomScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bottomScrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        bottomScrollView.dataSource = self
+    }
+        
     //Top shirt button setup
     lazy var topButton: HomescreenClothesSelectorButton = {
         let button = HomescreenClothesSelectorButton(title: "Button 1")
-        
         let topImage = UIImage(named: "top-filled-icon")
         button.setImage(topImage, for: .normal)
-                 
         return button
     }()
     
@@ -105,12 +126,6 @@ class HomeViewController: UIViewController {
         stack.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
-    func connectScrollViewWithButton () {
-        if bottomButtonIsPressed == false {
-            scrollView.isScrollEnabled = false
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = UIConfiguration.homeScreenTitle
@@ -118,15 +133,13 @@ class HomeViewController: UIViewController {
 
         //Change background color when implementing button to see position.
         view.backgroundColor = .white
-        //let homescreenModel = UIImage(named: "model")
         
         //Homescreen background setup
-        initBackGroundModel()
+        initBackgroundModel()
 
         //Scroll view setup
         initScrollView()
-        
-        connectScrollViewWithButton()
+        initSecondScrollView()
         
         //Double tap implementation
         view.isUserInteractionEnabled = true
@@ -137,39 +150,40 @@ class HomeViewController: UIViewController {
         
         //Button setup
         buttonConstraints()
-        
         topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
         bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
     }
     
+    //MARK: Helpers
     @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         //Confirms successful doubletap
         view.backgroundColor = UIColor.red
         HapticsManager.shared.vibrate(for: .success)
     }
-    
-    //MARK: Helpers
-    
 
     //Change button state
-    @objc func topButtonClicked(){
+    @objc func topButtonClicked() {
         topButtonIsPressed = true
         bottomButtonIsPressed = false
         topButton.setImage(UIImage(named: "top-filled-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
-        
-        //scrollView1.isScrollEnabled = false
-        
+        topScrollView.isScrollEnabled = true
+        bottomScrollView.isScrollEnabled = false
         print("Top button pressed")
+        print(topButtonIsPressed)
+        print(bottomButtonIsPressed)
     }
     
-    @objc func bottomButtonClicked(){
+    @objc func bottomButtonClicked() {
         topButtonIsPressed = false
         bottomButtonIsPressed = true
         topButton.setImage(UIImage(named: "top-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-filled-icon"), for: .normal)
-        
+        topScrollView.isScrollEnabled = false
+        bottomScrollView.isScrollEnabled = true
         print("Bottom button pressed")
+        print(topButtonIsPressed)
+        print(bottomButtonIsPressed)
     }
 }
 
