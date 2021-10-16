@@ -13,13 +13,19 @@ class HomeViewController: UIViewController {
     
     let data = [
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
+        ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit"))
+    ]
+    
+    let data2 = [
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "2.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "3.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
     ]
     
     //Button states
-    private var topButtonIsPressed: Bool = false
+    private var topButtonIsPressed: Bool = true
     private var bottomButtonIsPressed: Bool = false
     
     //Homescreen background setup
@@ -50,7 +56,7 @@ class HomeViewController: UIViewController {
         
         let collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.identifier)
+        collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier)
         
         return collectionView1
     }()
@@ -75,11 +81,11 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
-        let collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView2 = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.identifier)
+        collectionView2.register(SecondHomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: SecondHomepageScrollViewCustomCell.bottomScrollViewIdentifier)
         
-        return collectionView1
+        return collectionView2
     }()
     
     func initSecondScrollView() {
@@ -141,17 +147,17 @@ class HomeViewController: UIViewController {
         initScrollView()
         initSecondScrollView()
         
+        //Button setup
+        buttonConstraints()
+        topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
+        bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
+        
         //Double tap implementation
         view.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(didDoubleTap(_:)))
         tapGesture.numberOfTapsRequired = 2
         view.addGestureRecognizer(tapGesture)
-        
-        //Button setup
-        buttonConstraints()
-        topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
-        bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
     }
     
     //MARK: Helpers
@@ -163,24 +169,24 @@ class HomeViewController: UIViewController {
 
     //Change button state
     @objc func topButtonClicked() {
-        topButtonIsPressed = true
-        bottomButtonIsPressed = false
+        //topButtonIsPressed = true
+        //bottomButtonIsPressed = false
         topButton.setImage(UIImage(named: "top-filled-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
-        topScrollView.isScrollEnabled = true
-        bottomScrollView.isScrollEnabled = false
+        //topScrollView.isScrollEnabled = true
+        //bottomScrollView.isScrollEnabled = false
         print("Top button pressed")
         print(topButtonIsPressed)
         print(bottomButtonIsPressed)
     }
     
     @objc func bottomButtonClicked() {
-        topButtonIsPressed = false
-        bottomButtonIsPressed = true
+        //topButtonIsPressed = false
+        //bottomButtonIsPressed = true
         topButton.setImage(UIImage(named: "top-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-filled-icon"), for: .normal)
-        topScrollView.isScrollEnabled = false
-        bottomScrollView.isScrollEnabled = true
+        //topScrollView.isScrollEnabled = false
+        //bottomScrollView.isScrollEnabled = true
         print("Bottom button pressed")
         print(topButtonIsPressed)
         print(bottomButtonIsPressed)
@@ -188,15 +194,25 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
-    
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return data.count
+         if collectionView == topScrollView {
+             return data.count
+         }
+         return data2.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.identifier, for: indexPath) as! HomepageScrollViewCustomCell
-        collectionCell.data = self.data[indexPath.row]
-        return collectionCell
+        if collectionView == topScrollView {
+            let collectionCell = topScrollView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier, for: indexPath) as! HomepageScrollViewCustomCell
+            collectionCell.data = self.data[indexPath.row]
+            
+            return collectionCell
+        } else {
+            let collectionCell2 = bottomScrollView.dequeueReusableCell(withReuseIdentifier: SecondHomepageScrollViewCustomCell.bottomScrollViewIdentifier, for: indexPath) as! SecondHomepageScrollViewCustomCell
+                collectionCell2.data = self.data2[indexPath.row]
+            
+            return collectionCell2
+        }
     }
 }
  

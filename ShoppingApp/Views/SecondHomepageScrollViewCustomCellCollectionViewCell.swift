@@ -1,16 +1,17 @@
 //
-//  HomepageScrollViewCell.swift
+//  SecondHomepageScrollViewCustomCellCollectionViewCell.swift
 //  ShoppingApp
 //
-//  Created by Kevin Phan on 10/11/21.
+//  Created by Kevin Phan on 10/15/21.
+//  Copyright © 2021 iOS App Templates. All rights reserved.
 //
 
 import UIKit
 
-class HomepageScrollViewCustomCell: UICollectionViewCell {
- 
-    static let topScrollViewIdentifier = "CustomScrollViewCell"
+class SecondHomepageScrollViewCustomCell: UICollectionViewCell {
     
+    static let bottomScrollViewIdentifier = "SecondCustomScrollViewCell"
+
     var data: ScrollViewImages? {
         didSet {
             guard let data = data else {return}
