@@ -121,6 +121,7 @@
 		D8B24A2C27168A0800892C3E /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B24A2B27168A0700892C3E /* HapticsManager.swift */; };
 		D8B24A2E2717AF2000892C3E /* HomescreenClothesSelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B24A2D2717AF1E00892C3E /* HomescreenClothesSelectorButton.swift */; };
 		D8B24A30271A8E5200892C3E /* SecondHomepageScrollViewCustomCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B24A2F271A8E4F00892C3E /* SecondHomepageScrollViewCustomCellCollectionViewCell.swift */; };
+		D8B24A32271CCF9A00892C3E /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B24A31271CCF9800892C3E /* PassthroughView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +246,7 @@
 		D8B24A2B27168A0700892C3E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		D8B24A2D2717AF1E00892C3E /* HomescreenClothesSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenClothesSelectorButton.swift; sourceTree = "<group>"; };
 		D8B24A2F271A8E4F00892C3E /* SecondHomepageScrollViewCustomCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHomepageScrollViewCustomCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8B24A31271CCF9800892C3E /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
 		DEFF82BB68F94F6A55622F12 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		E61B1A3F1D7F673A9DA3B1B2 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0A25332C6EA81E2C31437D /* Pods-ShoppingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingAppUITests/Pods-ShoppingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */,
 				D8B24A292715398D00892C3E /* HomepageScrollViewCustomCell.swift */,
 				D8B24A2F271A8E4F00892C3E /* SecondHomepageScrollViewCustomCellCollectionViewCell.swift */,
+				D8B24A31271CCF9800892C3E /* PassthroughView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				176535511FC64B0900C71C92 /* AppConfiguration.swift in Sources */,
 				1762D27E1F5646060073F4CD /* HomeViewController.swift in Sources */,
 				170CAE4D1F6246D5002C2AB7 /* ConstraintDescription.swift in Sources */,
+				D8B24A32271CCF9A00892C3E /* PassthroughView.swift in Sources */,
 				170CAE651F6246D5002C2AB7 /* ConstraintViewDSL.swift in Sources */,
 				D834EEC92590D8F1001F5086 /* SwipeableCollectionViewCell.swift in Sources */,
 				17255DA21F9D874D00B55FE8 /* WordPressPost.swift in Sources */,

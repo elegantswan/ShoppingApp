@@ -24,10 +24,6 @@ class HomeViewController: UIViewController {
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
     ]
     
-    //Button states
-    private var topButtonIsPressed: Bool = true
-    private var bottomButtonIsPressed: Bool = false
-    
     //Homescreen background setup
     lazy var backgroundModel: UIImageView = {
         let modelBackgroundView = UIImageView()
@@ -57,12 +53,14 @@ class HomeViewController: UIViewController {
         let collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier)
-        
+                                
         return collectionView1
     }()
     
     func initScrollView() {
         view.addSubview(topScrollView)
+
+        //*************TAKE A LOOK AT THIS: FALSE LETS YOU CHANGE BUTTONS BUT NOT INTERACT WITH SCROLLVIEW
         topScrollView.backgroundColor = UIColor.clear
         topScrollView.translatesAutoresizingMaskIntoConstraints = false
         topScrollView.isPagingEnabled = true
@@ -84,12 +82,13 @@ class HomeViewController: UIViewController {
         let collectionView2 = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView2.register(SecondHomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: SecondHomepageScrollViewCustomCell.bottomScrollViewIdentifier)
-        
+                        
         return collectionView2
     }()
     
     func initSecondScrollView() {
         view.addSubview(bottomScrollView)
+        //************************************************TAKE A LOOK AT THIS
         bottomScrollView.backgroundColor = UIColor.clear
         bottomScrollView.translatesAutoresizingMaskIntoConstraints = false
         bottomScrollView.isPagingEnabled = true
@@ -114,11 +113,23 @@ class HomeViewController: UIViewController {
         
         let bottomImage = UIImage(imageLiteralResourceName: "bottoms-icon")
         button.setImage(bottomImage, for: .normal)
-
         return button
     }()
     
-    func buttonConstraints(){
+    
+    //Top and bottom button implementation
+    lazy var buttonStack: HomescreenClothesSelectorButton = {
+        let button = HomescreenClothesSelectorButton(title: "Button 2")
+        
+        let bottomImage = UIImage(imageLiteralResourceName: "bottoms-icon")
+        button.setImage(bottomImage, for: .normal)
+        return button
+    }()
+    
+    
+    
+    
+    func buttonConstraints() {
         let stack = UIStackView(arrangedSubviews: [topButton, bottomButton])
         stack.axis = .vertical
         stack.spacing = 0
@@ -135,32 +146,44 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = UIConfiguration.homeScreenTitle
-        self.view = view
-
+        
         //Change background color when implementing button to see position.
         view.backgroundColor = .white
         
         //Homescreen background setup
         initBackgroundModel()
-
+        
         //Scroll view setup
-        initScrollView()
         initSecondScrollView()
+        initScrollView()
         
         //Button setup
         buttonConstraints()
         topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
         bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
         
+        //Single tap implementation
+        let singleTapGesture = UITapGestureRecognizer(target: self,
+                                                          action: #selector(didTapView(_:)))
+        singleTapGesture.numberOfTapsRequired = 1
+        view.addGestureRecognizer(singleTapGesture)
+        
         //Double tap implementation
-        view.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self,
+        let doubleTapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(didDoubleTap(_:)))
-        tapGesture.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tapGesture)
+        doubleTapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTapGesture)
     }
     
     //MARK: Helpers
+    @objc private func didTapView(_ sender: UITapGestureRecognizer) {
+        //NEED TO CLEANER IMPLEMENTAION SINCE USER HAS TO TAP TWICE ON TOP BUTTON*********************************************************
+        view.bringSubviewToFront(topButton)
+        view.sendSubviewToBack(bottomScrollView)
+        view.sendSubviewToBack(backgroundModel)
+        view.backgroundColor = UIColor.blue
+    }
+    
     @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         //Confirms successful doubletap
         view.backgroundColor = UIColor.red
@@ -169,27 +192,21 @@ class HomeViewController: UIViewController {
 
     //Change button state
     @objc func topButtonClicked() {
-        //topButtonIsPressed = true
-        //bottomButtonIsPressed = false
         topButton.setImage(UIImage(named: "top-filled-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
-        //topScrollView.isScrollEnabled = true
-        //bottomScrollView.isScrollEnabled = false
+        //view.bringSubviewToFront(topScrollView)
+        topScrollView.isScrollEnabled = true
+        bottomScrollView.isScrollEnabled = false
         print("Top button pressed")
-        print(topButtonIsPressed)
-        print(bottomButtonIsPressed)
     }
     
     @objc func bottomButtonClicked() {
-        //topButtonIsPressed = false
-        //bottomButtonIsPressed = true
         topButton.setImage(UIImage(named: "top-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-filled-icon"), for: .normal)
-        //topScrollView.isScrollEnabled = false
-        //bottomScrollView.isScrollEnabled = true
+        view.bringSubviewToFront(bottomScrollView)
+        topScrollView.isScrollEnabled = false
+        bottomScrollView.isScrollEnabled = true
         print("Bottom button pressed")
-        print(topButtonIsPressed)
-        print(bottomButtonIsPressed)
     }
 }
 
