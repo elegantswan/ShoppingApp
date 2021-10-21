@@ -116,19 +116,6 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    
-    //Top and bottom button implementation
-    lazy var buttonStack: HomescreenClothesSelectorButton = {
-        let button = HomescreenClothesSelectorButton(title: "Button 2")
-        
-        let bottomImage = UIImage(imageLiteralResourceName: "bottoms-icon")
-        button.setImage(bottomImage, for: .normal)
-        return button
-    }()
-    
-    
-    
-    
     func buttonConstraints() {
         let stack = UIStackView(arrangedSubviews: [topButton, bottomButton])
         stack.axis = .vertical
@@ -178,7 +165,6 @@ class HomeViewController: UIViewController {
     //MARK: Helpers
     @objc private func didTapView(_ sender: UITapGestureRecognizer) {
         //NEED TO CLEANER IMPLEMENTAION SINCE USER HAS TO TAP TWICE ON TOP BUTTON*********************************************************
-        view.bringSubviewToFront(topButton)
         view.sendSubviewToBack(bottomScrollView)
         view.sendSubviewToBack(backgroundModel)
         view.backgroundColor = UIColor.blue
