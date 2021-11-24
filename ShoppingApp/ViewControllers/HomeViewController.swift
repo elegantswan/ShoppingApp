@@ -5,12 +5,12 @@
 
 import UIKit
 
+
 struct ScrollViewImages {
     var outfitImage: UIImage
 }
 
-class HomeViewController: UIViewController {
-    
+class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     let data = [
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
@@ -23,6 +23,22 @@ class HomeViewController: UIViewController {
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "3.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "4.Outfit"))
     ]
+    
+    fileprivate let cartManager: ATCShoppingCartManager
+    fileprivate let kCellReuseIdentifier = "CartItemCollectionViewCell"
+    
+    
+    //new********
+    init(cartManager: ATCShoppingCartManager) {
+        self.cartManager = cartManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    //new*************
+    
     
     //Homescreen background setup
     lazy var backgroundModel: UIImageView = {
@@ -53,7 +69,7 @@ class HomeViewController: UIViewController {
         let collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView1.register(HomepageScrollViewCustomCell.self, forCellWithReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier)
-                                
+                                                
         return collectionView1
     }()
     
@@ -68,6 +84,7 @@ class HomeViewController: UIViewController {
         topScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         topScrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        //WHY DATASOURCE WASN'T POPULATING*********************************************************
         topScrollView.dataSource = self
     }
     
@@ -96,6 +113,7 @@ class HomeViewController: UIViewController {
         bottomScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bottomScrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        //WHY DATASOURCE WASN'T POPULATING*********************************************************
         bottomScrollView.dataSource = self
     }
         
@@ -110,7 +128,6 @@ class HomeViewController: UIViewController {
     //Bottom pants button setup
     lazy var bottomButton: HomescreenClothesSelectorButton = {
         let button = HomescreenClothesSelectorButton(title: "Button 2")
-        
         let bottomImage = UIImage(imageLiteralResourceName: "bottoms-icon")
         button.setImage(bottomImage, for: .normal)
         return button
@@ -163,6 +180,8 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Helpers
+
+    
     @objc private func didTapView(_ sender: UITapGestureRecognizer) {
         //NEED TO CLEANER IMPLEMENTAION SINCE USER HAS TO TAP TWICE ON TOP BUTTON*********************************************************
         view.sendSubviewToBack(bottomScrollView)
@@ -194,8 +213,24 @@ class HomeViewController: UIViewController {
         bottomScrollView.isScrollEnabled = true
         print("Bottom button pressed")
     }
+    
+    //NEW: RELOOK AT THIS*********************************************************************************************
+    // MARK: - ATCShoppingCartManagerDelegate
+    func cartManagerDidClearProducts(_ cartManager: ATCShoppingCartManager) {
+        self.topScrollView.reloadData()
+        self.bottomScrollView.reloadData()
+    }
+    
+    func cartManagerDidAddProduct(_ cartManager: ATCShoppingCartManager) {
+        self.topScrollView.reloadData()
+        self.bottomScrollView.reloadData()
+    }
+    
+    //NEW**********
 }
 
+//************WORKING VERSION*****************
+/*
 extension HomeViewController: UICollectionViewDataSource {
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          if collectionView == topScrollView {
@@ -218,4 +253,22 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
 }
- 
+ */
+
+//********************Relook at this****************
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cartManager.numberOfObjects()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = topScrollView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier, for: indexPath) as? HomepageScrollViewCustomCell else {
+            fatalError()
+        }
+                        
+        let item = cartManager.object(at: indexPath.row)
+        cell.configure(item: item)
+        return cell
+    }
+}

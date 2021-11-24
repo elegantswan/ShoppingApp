@@ -91,7 +91,7 @@ DEPENDENCIES:
   - Stripe
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - Firebase
     - FirebaseAnalytics
@@ -131,4 +131,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6b7dbc18bd30a36d94746d51c538380c510160da
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.11.2

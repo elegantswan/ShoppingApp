@@ -2,9 +2,6 @@
 //  ProductDetailsViewController.swift
 //  ShoppingApp
 //
-//  Created by Florian Marcu on 11/18/17.
-//  Copyright © 2017 iOS App Templates. All rights reserved.
-//
 
 import Kingfisher
 import UIKit

@@ -11,7 +11,7 @@ import UIKit
 class SecondHomepageScrollViewCustomCell: UICollectionViewCell {
     
     static let bottomScrollViewIdentifier = "SecondCustomScrollViewCell"
-
+    
     var data: ScrollViewImages? {
         didSet {
             guard let data = data else {return}

@@ -9,7 +9,6 @@
 import Kingfisher
 import UIKit
 
-
 //parameter was previously SwipeableCollectionView
 class CartItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet var cartItemImageView: UIImageView!
@@ -35,12 +34,11 @@ class CartItemCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    
     /*
     private func setupSubviews() {
-        //visibleContainerView.backgroundColor = .white
-        //visibleContainerView.addSubview(itemNameLabel)
-        //itemNameLabel.pinEdgesToSuperView()
+        visibleContainerView.backgroundColor = .white
+        visibleContainerView.addSubview(itemNameLabel)
+        itemNameLabel.pinEdgesToSuperView()
         
      
      

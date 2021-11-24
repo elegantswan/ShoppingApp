@@ -7,10 +7,14 @@ import UIKit
 
 class HostViewController: UIViewController, UITabBarControllerDelegate {
 
-    let homeVC: UIViewController = HomeViewController()
+
+    //RELOOK AT THIS CODE
+    let homeVC: UIViewController = HomeViewController(cartManager: cartManager)
+
+    //RELOOK AT THIS CODE
+    static let cartManager: ATCShoppingCartManager = ATCShoppingCartManager()
     let categoriesVC: UIViewController = CategoriesViewController()
     let profileVC: UIViewController = ProfileViewController()
-    static let cartManager: ATCShoppingCartManager = ATCShoppingCartManager()
     static let cartViewController: CartViewController = CartViewController(cartManager: cartManager)
 
     lazy var hostTabController: UIViewController = { [unowned self] in

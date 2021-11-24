@@ -106,13 +106,9 @@
 		17DF7A111FB7C311004C9C31 /* ATCLiquidCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DF7A101FB7C311004C9C31 /* ATCLiquidCollectionViewLayout.swift */; };
 		17EE8F381F9439B200997871 /* ProductCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE8F371F9439B200997871 /* ProductCollectionViewController.swift */; };
 		17F9EB1D1F58CDDD0005F164 /* ShoppingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9EB1C1F58CDDD0005F164 /* ShoppingNavigationController.swift */; };
-		81E10DAA8C46C923DC803859 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61B1A3F1D7F673A9DA3B1B2 /* Pods_ShoppingApp.framework */; };
-		D834EE77255D6B76001F5086 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE74255D6B76001F5086 /* UILabel+.swift */; };
-		D834EE78255D6B76001F5086 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE75255D6B76001F5086 /* UIScrollView+.swift */; };
+		3FD72B606EF0F7AA68E91C21 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929D05BE431B6E7D306F986F /* Pods_ShoppingApp.framework */; };
 		D834EE81256149A2001F5086 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE80256149A2001F5086 /* ProfileViewController.swift */; };
 		D834EE8525614E8B001F5086 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE8425614E8B001F5086 /* CustomCollectionViewCell.swift */; };
-		D834EE992562AB08001F5086 /* ClothingScroll.xib in Resources */ = {isa = PBXBuildFile; fileRef = D834EE982562AB08001F5086 /* ClothingScroll.xib */; };
-		D834EE9C2562ABE6001F5086 /* ClothingScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EE9B2562ABE6001F5086 /* ClothingScroll.swift */; };
 		D834EEC92590D8F1001F5086 /* SwipeableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EEC82590D8F1001F5086 /* SwipeableCollectionViewCell.swift */; };
 		D834EECC2590D8FB001F5086 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */; };
 		D834EED12590D9B5001F5086 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D834EED02590D9B5001F5086 /* UIView+Anchors.swift */; };
@@ -124,8 +120,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01A2B2E24AF1D851B9249B3A /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
-		13BFEAA14D675A14A90465A3 /* Pods-ShoppingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingAppUITests/Pods-ShoppingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1709C02C1F5B85E50061A16D /* UIViewController+ATCAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ATCAdditions.swift"; sourceTree = "<group>"; };
 		1709C02E1F5B88770061A16D /* DumbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbViewController.swift; sourceTree = "<group>"; };
 		170CAE161F624277002C2AB7 /* SJContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJContentView.swift; sourceTree = "<group>"; };
@@ -230,24 +224,23 @@
 		17DF7A101FB7C311004C9C31 /* ATCLiquidCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATCLiquidCollectionViewLayout.swift; sourceTree = "<group>"; };
 		17EE8F371F9439B200997871 /* ProductCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewController.swift; sourceTree = "<group>"; };
 		17F9EB1C1F58CDDD0005F164 /* ShoppingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingNavigationController.swift; sourceTree = "<group>"; };
-		3F281E18A09136FA57ABE4C8 /* Pods_ShoppingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33DE13E50EAD6779AD88197C /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		929D05BE431B6E7D306F986F /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D834EE74255D6B76001F5086 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "../../../../Documents/PagingViewsTutorial/PagingViewsTutorial/Helpers/UILabel+.swift"; sourceTree = "<group>"; };
 		D834EE75255D6B76001F5086 /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "../../../../Documents/PagingViewsTutorial/PagingViewsTutorial/Helpers/UIScrollView+.swift"; sourceTree = "<group>"; };
 		D834EE80256149A2001F5086 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D834EE8425614E8B001F5086 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		D834EE982562AB08001F5086 /* ClothingScroll.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClothingScroll.xib; path = "../../../../instagram/instagram/Controllers/Core Tabs/ClothingScroll.xib"; sourceTree = "<group>"; };
 		D834EE9B2562ABE6001F5086 /* ClothingScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClothingScroll.swift; path = ../../../../instagram/instagram/Controllers/Other/General/ClothingScroll.swift; sourceTree = "<group>"; };
 		D834EEC82590D8F1001F5086 /* SwipeableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCollectionViewCell.swift; sourceTree = "<group>"; };
 		D834EECB2590D8FB001F5086 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		D834EED02590D9B5001F5086 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Anchors.swift"; path = "../../../../../Downloads/SwipeableCollectionViewCell-Example-master/SwipeableCollectionViewCell-Example/UIView+Anchors.swift"; sourceTree = "<group>"; };
+		D8353297273B4A0700E607A0 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D85E705927210DDA00BA60DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8B24A292715398D00892C3E /* HomepageScrollViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageScrollViewCustomCell.swift; sourceTree = "<group>"; };
 		D8B24A2B27168A0700892C3E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		D8B24A2D2717AF1E00892C3E /* HomescreenClothesSelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenClothesSelectorButton.swift; sourceTree = "<group>"; };
 		D8B24A2F271A8E4F00892C3E /* SecondHomepageScrollViewCustomCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondHomepageScrollViewCustomCellCollectionViewCell.swift; sourceTree = "<group>"; };
-		DEFF82BB68F94F6A55622F12 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
-		E61B1A3F1D7F673A9DA3B1B2 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC0A25332C6EA81E2C31437D /* Pods-ShoppingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoppingAppUITests/Pods-ShoppingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F6B688A4659DB01AD0855622 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81E10DAA8C46C923DC803859 /* Pods_ShoppingApp.framework in Frameworks */,
+				3FD72B606EF0F7AA68E91C21 /* Pods_ShoppingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,8 +395,8 @@
 				1762D2591F56427F0073F4CD /* ShoppingApp */,
 				1762D26E1F56427F0073F4CD /* ShoppingAppUITests */,
 				1762D2581F56427F0073F4CD /* Products */,
-				C95C87204D73A5C134BF9F4B /* Pods */,
-				F4D5C393831953C78B92E5BC /* Frameworks */,
+				64F469FE29D33448C7E8DDB9 /* Pods */,
+				20B54A4AB4F6B0D7A1CB6655 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -449,7 +442,6 @@
 				D834EE80256149A2001F5086 /* ProfileViewController.swift */,
 				1762D27B1F5645FA0073F4CD /* CategoriesViewController.swift */,
 				1762D27D1F5646060073F4CD /* HomeViewController.swift */,
-				D834EE982562AB08001F5086 /* ClothingScroll.xib */,
 				1762D27F1F5646160073F4CD /* ItemsViewController.swift */,
 				1762D2841F5647890073F4CD /* CartViewController.swift */,
 				17F9EB1C1F58CDDD0005F164 /* ShoppingNavigationController.swift */,
@@ -581,24 +573,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C95C87204D73A5C134BF9F4B /* Pods */ = {
+		20B54A4AB4F6B0D7A1CB6655 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				01A2B2E24AF1D851B9249B3A /* Pods-ShoppingApp.debug.xcconfig */,
-				DEFF82BB68F94F6A55622F12 /* Pods-ShoppingApp.release.xcconfig */,
-				FC0A25332C6EA81E2C31437D /* Pods-ShoppingAppUITests.debug.xcconfig */,
-				13BFEAA14D675A14A90465A3 /* Pods-ShoppingAppUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		F4D5C393831953C78B92E5BC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E61B1A3F1D7F673A9DA3B1B2 /* Pods_ShoppingApp.framework */,
-				3F281E18A09136FA57ABE4C8 /* Pods_ShoppingAppUITests.framework */,
+				D8353297273B4A0700E607A0 /* Kingfisher.framework */,
+				929D05BE431B6E7D306F986F /* Pods_ShoppingApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64F469FE29D33448C7E8DDB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				33DE13E50EAD6779AD88197C /* Pods-ShoppingApp.debug.xcconfig */,
+				F6B688A4659DB01AD0855622 /* Pods-ShoppingApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,11 +598,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1762D2741F56427F0073F4CD /* Build configuration list for PBXNativeTarget "ShoppingApp" */;
 			buildPhases = (
-				496BF6F34B78CC7B9F80C53C /* [CP] Check Pods Manifest.lock */,
+				A50B253D99130A962A81626F /* [CP] Check Pods Manifest.lock */,
 				1762D2531F56427F0073F4CD /* Sources */,
 				1762D2541F56427F0073F4CD /* Frameworks */,
 				1762D2551F56427F0073F4CD /* Resources */,
-				25782F0BA1AC232CA5E6F81A /* [CP] Embed Pods Frameworks */,
+				C527811F39F377BC875E114C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -661,7 +651,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D834EE992562AB08001F5086 /* ClothingScroll.xib in Resources */,
 				174B7B481FC0DC4400A48144 /* ImageCollectionViewCell.xib in Resources */,
 				174B7B441FC0D40900A48144 /* ProductDetailsViewController.xib in Resources */,
 				17B80ED51F94500F0023CC2B /* ProductCollectionViewCell.xib in Resources */,
@@ -677,13 +666,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25782F0BA1AC232CA5E6F81A /* [CP] Embed Pods Frameworks */ = {
+		A50B253D99130A962A81626F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C527811F39F377BC875E114C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -706,25 +717,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		496BF6F34B78CC7B9F80C53C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShoppingApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -758,7 +751,6 @@
 				170CAE681F6246D5002C2AB7 /* LayoutConstraint.swift in Sources */,
 				1770EBB11F58C80B004620C9 /* BadgedButton.swift in Sources */,
 				170CAE241F624277002C2AB7 /* SJUtil.swift in Sources */,
-				D834EE78255D6B76001F5086 /* UIScrollView+.swift in Sources */,
 				D834EED12590D9B5001F5086 /* UIView+Anchors.swift in Sources */,
 				17255DBD1FB79EB600B55FE8 /* UIColor.swift in Sources */,
 				1762D25D1F56427F0073F4CD /* HostViewController.swift in Sources */,
@@ -811,7 +803,6 @@
 				17A6E8D024DA2AEE0095CDA1 /* ATCAddress.swift in Sources */,
 				170CAE531F6246D5002C2AB7 /* ConstraintLayoutGuide.swift in Sources */,
 				170CAE221F624277002C2AB7 /* SJSegmentView.swift in Sources */,
-				D834EE77255D6B76001F5086 /* UILabel+.swift in Sources */,
 				178A476E22A235F70030A873 /* SettingsViewController.swift in Sources */,
 				174B7B471FC0DC4400A48144 /* ImageCollectionViewCell.swift in Sources */,
 				17C6E00D1F9430400071A0FE /* ATCGenericFirebaseDataSource.swift in Sources */,
@@ -826,7 +817,6 @@
 				170CAE231F624277002C2AB7 /* SJShadow.swift in Sources */,
 				170CAE1F1F624277002C2AB7 /* SJSegmentedScrollView.swift in Sources */,
 				170CAE561F6246D5002C2AB7 /* ConstraintLayoutSupportDSL.swift in Sources */,
-				D834EE9C2562ABE6001F5086 /* ClothingScroll.swift in Sources */,
 				1709C02D1F5B85E50061A16D /* UIViewController+ATCAdditions.swift in Sources */,
 				178A476D22A235F70030A873 /* CheckoutViewController.swift in Sources */,
 				170CAE5A1F6246D5002C2AB7 /* ConstraintMakerFinalizable.swift in Sources */,
@@ -890,6 +880,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -950,6 +941,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -960,6 +952,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
@@ -969,7 +962,7 @@
 		};
 		1762D2751F56427F0073F4CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01A2B2E24AF1D851B9249B3A /* Pods-ShoppingApp.debug.xcconfig */;
+			baseConfigurationReference = 33DE13E50EAD6779AD88197C /* Pods-ShoppingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7FJ42L78TW;
@@ -986,13 +979,14 @@
 		};
 		1762D2761F56427F0073F4CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEFF82BB68F94F6A55622F12 /* Pods-ShoppingApp.release.xcconfig */;
+			baseConfigurationReference = F6B688A4659DB01AD0855622 /* Pods-ShoppingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7FJ42L78TW;
 				INFOPLIST_FILE = ShoppingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theta.ShoppingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

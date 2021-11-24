@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomepageScrollViewCustomCell: UICollectionViewCell {
- 
     static let topScrollViewIdentifier = "CustomScrollViewCell"
+
     
     var data: ScrollViewImages? {
         didSet {
@@ -18,6 +19,7 @@ class HomepageScrollViewCustomCell: UICollectionViewCell {
         }
     }
     
+    
     fileprivate let scrollImageView: UIImageView = {
         let imageView:UIImageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
@@ -25,6 +27,19 @@ class HomepageScrollViewCustomCell: UICollectionViewCell {
         return imageView
     }()
     
+    //***************************LOOK AT THIS PART
+    func configure(item: ATCShoppingCartItem) {
+        scrollImageView.kf.setImage(with: URL(string: item.product.cartImageURLString))
+        scrollImageView.contentMode = .scaleAspectFit
+    }
+    
+    let deleteImageView: UIImageView = {
+        let image = UIImage(named: "delete")?.withRenderingMode(.alwaysTemplate)
+        let imageView = UIImageView(image: image)
+        imageView.tintColor = .white
+        return imageView
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(scrollImageView)

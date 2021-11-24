@@ -1,10 +1,6 @@
 //
 //  CartViewController.swift
 //  ShoppingApp
-//
-//  Created by Florian Marcu on 8/29/17.
-//  Copyright © 2017 iOS App Templates. All rights reserved.
-//
 
 import UIKit
 
@@ -88,10 +84,12 @@ extension CartViewController {
         return cartManager.numberOfObjects()
     }
 
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: UIConfiguration.cartScreenCellHeight)
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionFooter) {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CartFooterCollectionReusableView", for: indexPath)
