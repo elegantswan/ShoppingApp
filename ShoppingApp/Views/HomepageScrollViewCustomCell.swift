@@ -10,7 +10,8 @@ import Kingfisher
 
 class HomepageScrollViewCustomCell: UICollectionViewCell {
     static let topScrollViewIdentifier = "CustomScrollViewCell"
-
+    
+    //WORKING VERSION
     
     var data: ScrollViewImages? {
         didSet {
@@ -20,13 +21,22 @@ class HomepageScrollViewCustomCell: UICollectionViewCell {
     }
     
     
+    //IMPLEMENTATION VERSION
+    /*
+    var data: ATCShoppingCartItem? {
+        didSet {
+            guard let data = data else {return}
+            //scrollImageView.image = data.outfitImage
+        }
+    }
+    */
+    
     fileprivate let scrollImageView: UIImageView = {
         let imageView:UIImageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
     //***************************LOOK AT THIS PART
     func configure(item: ATCShoppingCartItem) {
         scrollImageView.kf.setImage(with: URL(string: item.product.cartImageURLString))

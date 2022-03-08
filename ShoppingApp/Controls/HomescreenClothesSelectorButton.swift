@@ -17,7 +17,6 @@ class HomescreenClothesSelectorButton: UIButton {
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
-        
         //heightAnchor.constraint(equalToConstant: 0).isActive = true
     }
     

@@ -21,6 +21,5 @@ class CategoriesCollectionViewController: ATCGenericCollectionViewController {
         super.viewDidLoad()
         self.collectionView?.backgroundColor = UIConfiguration.categoryScreenBackgroundColor
         collectionView.showsVerticalScrollIndicator = false
-
     }
 }

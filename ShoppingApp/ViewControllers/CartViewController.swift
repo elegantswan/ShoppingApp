@@ -62,6 +62,7 @@ class CartViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
 
     func cartManagerDidAddProduct(_ cartManager: ATCShoppingCartManager) {
+        //print("right product added")
         self.collectionView?.reloadData()
     }
 }
@@ -84,8 +85,6 @@ extension CartViewController {
         return cartManager.numberOfObjects()
     }
 
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: UIConfiguration.cartScreenCellHeight)
     }
@@ -104,14 +103,16 @@ extension CartViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: UIConfiguration.cartScreenFooterCellHeight)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }
-
 
 //REVIEW
 extension CartViewController: SwipeableCollectionViewCellDelegate {
     func hiddenContainerViewTapped(inCell cell: UICollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: cell) else { return }
-        //ATCShoppingCart.remove(at: indexPath.item)
         collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: [indexPath])
         })

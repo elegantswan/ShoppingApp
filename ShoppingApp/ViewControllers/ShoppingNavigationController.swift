@@ -20,7 +20,7 @@ class ShoppingNavigationController: UINavigationController {
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         rootViewController.navigationItem.rightBarButtonItem = ShoppingNavigationController.shoppingCartButton
-        NotificationCenter.default.addObserver(self, selector: #selector(didUpdateCart), name: kATCNotificationDidAddProductToCart, object: nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(didUpdateCart), name: kATCNotificationDidAddProductToCart, object: nil)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

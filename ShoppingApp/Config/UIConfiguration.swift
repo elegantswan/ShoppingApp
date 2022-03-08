@@ -25,7 +25,7 @@ class UIConfiguration {
     // Home screen
     static let homeScreenTitle = "" //Replace with logo
     static let categoriesTitle = "Shop"
-    static let profileTitle = "Lookup"
+    static let profileTitle = "Lookbook"
 
 
     // Tab bar

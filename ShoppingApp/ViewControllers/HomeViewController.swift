@@ -5,12 +5,12 @@
 
 import UIKit
 
-
 struct ScrollViewImages {
     var outfitImage: UIImage
 }
 
 class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
+        
     let data = [
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
         ScrollViewImages(outfitImage: UIImage(imageLiteralResourceName: "1.Outfit")),
@@ -27,9 +27,9 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     fileprivate let cartManager: ATCShoppingCartManager
     fileprivate let kCellReuseIdentifier = "CartItemCollectionViewCell"
     
-    
     //new********
     init(cartManager: ATCShoppingCartManager) {
+        //self.cartManager = cartManager
         self.cartManager = cartManager
         super.init(nibName: nil, bundle: nil)
     }
@@ -116,6 +116,14 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
         //WHY DATASOURCE WASN'T POPULATING*********************************************************
         bottomScrollView.dataSource = self
     }
+    
+    //Favorite button setup
+    lazy var favoriteButton: HomescreenClothesSelectorButton = {
+        let button = HomescreenClothesSelectorButton(title: "Favorite Button")
+        let heartImage = UIImage(named: "heart")
+        button.setImage(heartImage, for: .normal)
+        return button
+    }()
         
     //Top shirt button setup
     lazy var topButton: HomescreenClothesSelectorButton = {
@@ -134,7 +142,7 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     }()
     
     func buttonConstraints() {
-        let stack = UIStackView(arrangedSubviews: [topButton, bottomButton])
+        let stack = UIStackView(arrangedSubviews: [favoriteButton, topButton, bottomButton])
         stack.axis = .vertical
         stack.spacing = 0
         stack.distribution = .fillEqually
@@ -150,7 +158,7 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = UIConfiguration.homeScreenTitle
-        
+                
         //Change background color when implementing button to see position.
         view.backgroundColor = .white
         
@@ -163,6 +171,7 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
         
         //Button setup
         buttonConstraints()
+        favoriteButton.addTarget(self, action: #selector(favoriteButtonClicked), for: .touchUpInside)
         topButton.addTarget(self, action: #selector(topButtonClicked), for: .touchUpInside)
         bottomButton.addTarget(self, action: #selector(bottomButtonClicked), for: .touchUpInside)
         
@@ -180,38 +189,51 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     }
     
     //MARK: Helpers
-
-    
     @objc private func didTapView(_ sender: UITapGestureRecognizer) {
         //NEED TO CLEANER IMPLEMENTAION SINCE USER HAS TO TAP TWICE ON TOP BUTTON*********************************************************
         view.sendSubviewToBack(bottomScrollView)
         view.sendSubviewToBack(backgroundModel)
-        view.backgroundColor = UIColor.blue
     }
     
     @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
         //Confirms successful doubletap
-        view.backgroundColor = UIColor.red
         HapticsManager.shared.vibrate(for: .success)
     }
 
     //Change button state
+    @objc func favoriteButtonClicked() {
+        favoriteButton.setImage(UIImage(named: "heart-filled"), for: .normal)
+        topButton.setImage(UIImage(named: "top-icon"), for: .normal)
+        bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
+        HapticsManager.shared.vibrate(for: .success)
+        guard let screenshot = self.view.screenshot() else { return }
+        favorites.append(screenshot)
+        //share(screenshot: screenshot)
+    }
+    
+    //Move to profile VC for share implementation
+    func share(screenshot: UIImage) {
+        DispatchQueue.main.async {
+            let shareSheet = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
+            self.present(shareSheet, animated: true, completion: nil)
+        }
+    }
+    
     @objc func topButtonClicked() {
+        favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
         topButton.setImage(UIImage(named: "top-filled-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-icon"), for: .normal)
-        //view.bringSubviewToFront(topScrollView)
         topScrollView.isScrollEnabled = true
         bottomScrollView.isScrollEnabled = false
-        print("Top button pressed")
     }
     
     @objc func bottomButtonClicked() {
+        favoriteButton.setImage(UIImage(named: "heart"), for: .normal)
         topButton.setImage(UIImage(named: "top-icon"), for: .normal)
         bottomButton.setImage(UIImage(named: "bottoms-filled-icon"), for: .normal)
         view.bringSubviewToFront(bottomScrollView)
         topScrollView.isScrollEnabled = false
         bottomScrollView.isScrollEnabled = true
-        print("Bottom button pressed")
     }
     
     //NEW: RELOOK AT THIS*********************************************************************************************
@@ -222,15 +244,14 @@ class HomeViewController: UIViewController, ATCShoppingCartManagerDelegate {
     }
     
     func cartManagerDidAddProduct(_ cartManager: ATCShoppingCartManager) {
+        print("Wrong content")
         self.topScrollView.reloadData()
         self.bottomScrollView.reloadData()
     }
-    
-    //NEW**********
 }
 
 //************WORKING VERSION*****************
-/*
+
 extension HomeViewController: UICollectionViewDataSource {
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          if collectionView == topScrollView {
@@ -253,22 +274,46 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
 }
- */
+
+extension UIView {
+    func screenshot() -> UIImage? {
+        
+        let scale = UIScreen.main.scale
+        //Tried adjusting bounds code from youtube tutorial
+        //let bounds = self.bounds
+        let bounds = self.safeAreaLayoutGuide.layoutFrame
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, scale)
+        
+        if let _ = UIGraphicsGetCurrentContext() {
+            self.drawHierarchy(in: bounds, afterScreenUpdates: true)
+            let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return screenshot
+        }
+        return nil
+    }
+}
+ 
 
 //********************Relook at this****************
+
+/*
 extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+            guard let cell = topScrollView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier, for: indexPath) as? HomepageScrollViewCustomCell else {
+                fatalError()
+            }
+                    
+            let item = cartManager.object(at: indexPath.row)
+            cell.configure(item: item)
+            return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cartManager.numberOfObjects()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = topScrollView.dequeueReusableCell(withReuseIdentifier: HomepageScrollViewCustomCell.topScrollViewIdentifier, for: indexPath) as? HomepageScrollViewCustomCell else {
-            fatalError()
-        }
-                        
-        let item = cartManager.object(at: indexPath.row)
-        cell.configure(item: item)
-        return cell
-    }
 }
+*/
