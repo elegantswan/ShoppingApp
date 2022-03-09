@@ -22,12 +22,12 @@ class ProfileViewController: UIViewController {
     private var deleteButton: UIButton?
     
     //****New
-    /*
+    
     var viewMode: Mode = .view {
         didSet {
             switch viewMode {
             case .view:
-                selectBarButton.title = "Select"
+                selectBarButton.title = "Edit"
                 navigationItem.leftBarButtonItem = nil
                 collectionView?.allowsMultipleSelection = false
             case .select:
@@ -37,9 +37,9 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    */
+    
     lazy var selectBarButton: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(didSelectButtonClicked(_:)))
+        let barButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didSelectButtonClicked(_:)))
         return barButtonItem
     }()
     
@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func didSelectButtonClicked(_ sender: UIBarButtonItem) {
-        //viewMode = viewMode == .view ? .select : .view
+        viewMode = viewMode == .view ? .select : .view
     }
     
     @objc func didSelectDeleteButton(_ sender: UIBarButtonItem) {
@@ -108,19 +108,9 @@ extension ProfileViewController: UICollectionViewDataSource {
 }
 
 extension ProfileViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let imageView = UIImageView(image: favorites[indexPath.row])
-            imageView.frame = self.view.safeAreaLayoutGuide.layoutFrame
-            imageView.backgroundColor = .black
-            imageView.contentMode = .top
-            imageView.isUserInteractionEnabled = true
-
-            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-            imageView.addGestureRecognizer(tap)
-
-            self.view.addSubview(imageView)
-        /*
         switch viewMode {
         case .view:
             let imageView = UIImageView(image: favorites[indexPath.row])
@@ -136,6 +126,9 @@ extension ProfileViewController: UICollectionViewDelegate {
         case .select:
             break
         }
-        */
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
     }
 }

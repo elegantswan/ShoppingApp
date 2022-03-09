@@ -16,9 +16,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(myImageView)
         //contentView.addSubview(selectIndicator)
-        //contentView.addSubview(highlightIndicator)
+        contentView.addSubview(highlightIndicator)
         contentView.clipsToBounds = true
-        //self.addSubview(self.selectLabel)
         layoutSubviews()
     }
     
@@ -32,6 +31,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
+    
     /*
     private let selectIndicator: UIImageView = {
         let imageView = UIImageView()
@@ -40,18 +40,17 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "cancel")
         return imageView
     }()
-    
+    */
     
     private let highlightIndicator: UIView = {
         let myView = UIView()
-        myView.translatesAutoresizingMaskIntoConstraints = false
-        myView.backgroundColor = .red
-        //Use this for opaque effect
-        //myView.isOpaque = false
-        //myView.alpha = CGFloat(0.5)
+        myView.isHidden = true
+        myView.backgroundColor = UIConfiguration.mainThemeColor
+        myView.isOpaque = true
+        myView.alpha = CGFloat(0.5)
         return myView
     }()
-    */
+    
     func setup(with favorite: UIImage) {
         myImageView.image = favorite
     }
@@ -59,32 +58,21 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.width, height: contentView.frame.height)
-        /*
-        NSLayoutConstraint.activate([
-            selectIndicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            selectIndicator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            selectIndicator.widthAnchor.constraint(equalToConstant: 30),
-            selectIndicator.heightAnchor.constraint(equalToConstant: 30),
-            
-            highlightIndicator.topAnchor.constraint(equalTo: contentView.topAnchor),
-            highlightIndicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            highlightIndicator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            highlightIndicator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
-         */
+        highlightIndicator.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
     }
-    /*
+    
     override var isHighlighted: Bool {
         didSet {
             highlightIndicator.isHidden = !isHighlighted
+            //print(highlightIndicator.isHidden)
         }
     }
     
     override var isSelected: Bool {
         didSet {
             highlightIndicator.isHidden = !isSelected
-            selectIndicator.isHidden = !isSelected
+            //print(highlightIndicator.isHidden)
+            
         }
     }
-     */
 }
