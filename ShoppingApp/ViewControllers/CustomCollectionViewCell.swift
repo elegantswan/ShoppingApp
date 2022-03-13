@@ -14,9 +14,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(myImageView)
-        //contentView.addSubview(selectIndicator)
-        contentView.addSubview(highlightIndicator)
         contentView.clipsToBounds = true
         layoutSubviews()
     }
@@ -32,21 +29,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    /*
-    private let selectIndicator: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "cancel")
-        return imageView
-    }()
-    */
-    
     private let highlightIndicator: UIView = {
         let myView = UIView()
         myView.isHidden = true
         myView.backgroundColor = UIConfiguration.mainThemeColor
-        myView.isOpaque = true
+        myView.isUserInteractionEnabled = true
+        myView.isOpaque = false
         myView.alpha = CGFloat(0.5)
         return myView
     }()
@@ -57,22 +45,22 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        contentView.addSubview(myImageView)
+        contentView.addSubview(highlightIndicator)
         myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         highlightIndicator.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
     }
     
     override var isHighlighted: Bool {
-        didSet {
-            highlightIndicator.isHidden = !isHighlighted
-            //print(highlightIndicator.isHidden)
-        }
+      didSet {
+        highlightIndicator.isHidden = !isHighlighted
+      }
     }
     
     override var isSelected: Bool {
-        didSet {
-            highlightIndicator.isHidden = !isSelected
-            //print(highlightIndicator.isHidden)
-            
-        }
+      didSet {
+        highlightIndicator.isHidden = !isSelected
+      }
     }
+     
 }

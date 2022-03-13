@@ -16,17 +16,21 @@ class ProfileViewController: UIViewController {
         case select
     }
     
-    //**New
+    var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
+
     private var collectionView: UICollectionView?
-    //Could delete if can use two nav buttons instead
-    private var deleteButton: UIButton?
-    
-    //****New
-    
+        
     var viewMode: Mode = .view {
         didSet {
             switch viewMode {
             case .view:
+                for (key, value) in dictionarySelectedIndexPath {
+                  if value {
+                      collectionView?.deselectItem(at: key, animated: true)
+                  }
+                }
+                dictionarySelectedIndexPath.removeAll()
+                
                 selectBarButton.title = "Edit"
                 navigationItem.leftBarButtonItem = nil
                 collectionView?.allowsMultipleSelection = false
@@ -87,7 +91,19 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func didSelectDeleteButton(_ sender: UIBarButtonItem) {
+        var deleteNeededIndexPaths: [IndexPath] = []
+        for (key, value) in dictionarySelectedIndexPath {
+          if value {
+            deleteNeededIndexPaths.append(key)
+          }
+        }
         
+        for i in deleteNeededIndexPaths.sorted(by: { $0.item > $1.item }) {
+          favorites.remove(at: i.item)
+        }
+        
+        collectionView?.deleteItems(at: deleteNeededIndexPaths)
+        dictionarySelectedIndexPath.removeAll()
     }
 }
 
@@ -113,6 +129,7 @@ extension ProfileViewController: UICollectionViewDelegate {
         
         switch viewMode {
         case .view:
+            collectionView.deselectItem(at: indexPath, animated: true)
             let imageView = UIImageView(image: favorites[indexPath.row])
                 imageView.frame = self.view.safeAreaLayoutGuide.layoutFrame
                 imageView.backgroundColor = .black
@@ -124,11 +141,14 @@ extension ProfileViewController: UICollectionViewDelegate {
 
                 self.view.addSubview(imageView)
         case .select:
-            break
+            dictionarySelectedIndexPath[indexPath] = true
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
+        if viewMode == .select {
+            dictionarySelectedIndexPath[indexPath] = false
+        }
     }
 }
