@@ -78,6 +78,10 @@ class ProfileViewController: UIViewController {
         collectionView.frame = view.safeAreaLayoutGuide.layoutFrame
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        collectionView?.reloadData()
+    }
+    
     private func setupBarButtonItems() {
         navigationItem.rightBarButtonItem = selectBarButton
     }
@@ -92,6 +96,7 @@ class ProfileViewController: UIViewController {
     
     @objc func didSelectDeleteButton(_ sender: UIBarButtonItem) {
         var deleteNeededIndexPaths: [IndexPath] = []
+        
         for (key, value) in dictionarySelectedIndexPath {
           if value {
             deleteNeededIndexPaths.append(key)
@@ -107,7 +112,6 @@ class ProfileViewController: UIViewController {
     }
 }
 
-//*******Relook to see if reloadData is implemented correctly
 extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,7 +121,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
         cell.setup(with: favorites[indexPath.row])
-        collectionView.reloadData()
                 
         return cell
     }
@@ -140,6 +143,7 @@ extension ProfileViewController: UICollectionViewDelegate {
                 imageView.addGestureRecognizer(tap)
 
                 self.view.addSubview(imageView)
+            
         case .select:
             dictionarySelectedIndexPath[indexPath] = true
         }

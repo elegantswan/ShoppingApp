@@ -62,5 +62,4 @@ class CustomCollectionViewCell: UICollectionViewCell {
         highlightIndicator.isHidden = !isSelected
       }
     }
-     
 }
