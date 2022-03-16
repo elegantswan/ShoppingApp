@@ -109,6 +109,8 @@ class ProfileViewController: UIViewController {
         
         collectionView?.deleteItems(at: deleteNeededIndexPaths)
         dictionarySelectedIndexPath.removeAll()
+        
+        viewMode = viewMode == .select ? .view : .select
     }
 }
 
