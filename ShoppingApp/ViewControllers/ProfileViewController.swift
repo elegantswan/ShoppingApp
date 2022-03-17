@@ -70,6 +70,7 @@ class ProfileViewController: UIViewController {
             return
         }
         
+        collectionView.backgroundColor = .white
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self

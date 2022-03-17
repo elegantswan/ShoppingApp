@@ -7,7 +7,6 @@ import UIKit
 
 class HostViewController: UIViewController, UITabBarControllerDelegate {
 
-
     //RELOOK AT THIS CODE
     let homeVC: UIViewController = HomeViewController(cartManager: cartManager)
 
@@ -24,20 +23,20 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-               
+            appearance.backgroundColor = .white
+            
             tabBarController.tabBar.standardAppearance = appearance
             tabBarController.tabBar.scrollEdgeAppearance = appearance
         }
         
         tabBarController.delegate = self
-        //tabBarController.tabBar.barStyle = .default
-        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.isTranslucent = true
         tabBarController.viewControllers = [self.categoriesVC.navigationController(), self.homeVC.navigationController(), self.profileVC.navigationController()]
         return tabBarController
     }()
     
     func tabSetup() {
-        
+    
         let profileTabBarItem = UITabBarItem(title: UIConfiguration.profileTabBarItemTitle, image: UIConfiguration.profileTabBarItemImage, selectedImage: UIConfiguration.profileTabBarItemSelectedImage).tabBarWithNoTitle()
          
         
@@ -45,6 +44,7 @@ class HostViewController: UIViewController, UITabBarControllerDelegate {
         
         profileVC.tabBarItem = profileTabBarItem
         homeVC.tabBarItem = homeTabBarItem
+        
     }
     
     override func viewDidLoad() {

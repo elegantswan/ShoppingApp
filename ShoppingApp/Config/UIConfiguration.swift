@@ -110,7 +110,6 @@ class UIConfiguration {
             appearance.backgroundColor = mainThemeColor
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().standardAppearance = appearance
-
         }
     }
 }
